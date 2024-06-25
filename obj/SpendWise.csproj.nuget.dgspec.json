@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\jnyki\\Desktop\\Portfolio\\SpendWise\\SpendWise.csproj": {}
+    "C:\\Users\\jnyki\\Desktop\\Portfolio\\SpendWise\\SpendWise.csproj": {}
   },
   "projects": {
-    "c:\\Users\\jnyki\\Desktop\\Portfolio\\SpendWise\\SpendWise.csproj": {
+    "C:\\Users\\jnyki\\Desktop\\Portfolio\\SpendWise\\SpendWise.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\jnyki\\Desktop\\Portfolio\\SpendWise\\SpendWise.csproj",
+        "projectUniqueName": "C:\\Users\\jnyki\\Desktop\\Portfolio\\SpendWise\\SpendWise.csproj",
         "projectName": "SpendWise",
-        "projectPath": "c:\\Users\\jnyki\\Desktop\\Portfolio\\SpendWise\\SpendWise.csproj",
+        "projectPath": "C:\\Users\\jnyki\\Desktop\\Portfolio\\SpendWise\\SpendWise.csproj",
         "packagesPath": "C:\\Users\\jnyki\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\jnyki\\Desktop\\Portfolio\\SpendWise\\obj\\",
+        "outputPath": "C:\\Users\\jnyki\\Desktop\\Portfolio\\SpendWise\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -49,6 +49,22 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.SQLite": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
