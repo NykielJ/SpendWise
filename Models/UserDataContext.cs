@@ -4,6 +4,9 @@ namespace SpendWise.Models
 {
     public class UserDataContext : DbContext
     {
+        public UserDataContext(DbContextOptions<UserDataContext> options) : base(options)
+    {
+    }
         public DbSet<User> Users { get; set; }
         public DbSet<BudgetPlan> BudgetPlans { get; set; }
         public DbSet<Transaction> Transactions { get; set; }

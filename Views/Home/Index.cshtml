@@ -1,8 +1,17 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Spend Wise";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome on start page</h1>
+    
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <p>You are logged in as: <strong>@User.Identity.Name</strong></p>
+        <p>Go to <a href="/Account/Logout">Logout</a> page.</p>
+    }
+    else
+    {
+        <p>Go to <a href="/Account/Login">Login</a> page.</p>
+    }
 </div>

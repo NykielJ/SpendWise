@@ -1,8 +1,10 @@
 using System.Transactions;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace SpendWise.Models
 {
-public class User
+public class User : IdentityUser
     {
         public int Id { get; set; }
         public string Username { get; set; } //required?
