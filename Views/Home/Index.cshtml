@@ -3,15 +3,45 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome on start page</h1>
+    <h1 class="display-4">Welcome to Spend Wise</h1>
     
     @if (User.Identity?.IsAuthenticated == true)
     {
         <p>You are logged in as: <strong>@User.Identity.Name</strong></p>
-        <p>Go to <a href="/Account/Logout">Logout</a> page.</p>
+        <p>Account Details: <a href="/Account/Manage">Manage Account</a></p>
+        <p>Go to <a href="/Transaction">Transactions</a> page.</p>
+        <p><a href="/Account/Logout">Logout</a></p>
     }
     else
     {
         <p>Go to <a href="/Account/Login">Login</a> page.</p>
+        <p>Don't have an account? Go to <a href="/Account/Register">Register</a> page.</p>
     }
+
+    <hr />
+
+    <div class="row">
+        <div class="col-md-6">
+            <h2>About Spend Wise</h2>
+            <p>Spend Wise helps you manage your finances effectively by providing tools to track your income and expenses.</p>
+            <p>Key features include:</p>
+            <ul>
+                <li>Transaction management</li>
+                <li>Budget planning</li>
+                <li>Expense categorization</li>
+                <li>Financial summaries and reports</li>
+            </ul>
+            <p>Get started today and take control of your finances!</p>
+        </div>
+        <div class="col-md-6">
+            <h2>Latest News</h2>
+            <p>Stay updated with the latest features and improvements in Spend Wise.</p>
+            <p>Follow us on social media for more updates:</p>
+            <ul>
+                <li><a href="#">Twitter</a></li>
+                <li><a href="#">Facebook</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+    </div>
 </div>

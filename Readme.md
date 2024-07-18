@@ -3,6 +3,12 @@
 - Rejestracja i logowanie użytkowników:
     - Umożliwienie użytkownikom rejestracji konta i logowania się do aplikacji.
     - Zapewnienie bezpiecznego przechowywania danych użytkowników i ich sesji.
+    
+    todo w przyszłości:
+    - [ ] Dodanie funkcji resetowania hasła
+    - [ ] Dodanie funkcji zmiany hasła
+    - [] Dodanie funkcji zmiany imienia i nazwiska i innych takich użytkownika
+    - [] Dodanie funkcji zmiany emaila i ogólnie emaila bo nie ma
 
 - Dashboard i podsumowanie finansowe:
     - Wyświetlanie głównego panelu (dashboard) z podsumowaniem finansowym, takim jak saldo konta, łączne wydatki, oszczędności, itp.

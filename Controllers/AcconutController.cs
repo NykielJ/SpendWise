@@ -4,6 +4,8 @@ using SpendWise.Models;
 using System.Threading.Tasks;
 using SpendWise.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies; 
 
 public class AccountController : Controller
 {
@@ -16,13 +18,13 @@ public class AccountController : Controller
         _signInManager = signInManager;
     }
 
-    [HttpGet("/Account/Login")] // GET dla /Account/Login
+    [HttpGet("/Account/Login")]
     public IActionResult Login()
     {
         return View(); // Renderuje widok formularza logowania
     }
 
-    [HttpPost("/Account/Login")] // POST dla /Account/Login
+    [HttpPost("/Account/Login")] 
     public async Task<IActionResult> Login(LoginViewModel model)
     {
         if (ModelState.IsValid)
@@ -30,6 +32,14 @@ public class AccountController : Controller
             var result = await _signInManager.PasswordSignInAsync(model.Username, model.Password, model.RememberMe, lockoutOnFailure: false);
             if (result.Succeeded)
             {
+                var user = await _userManager.FindByNameAsync(model.Username);
+                if(user != null)
+                {
+                    user.LastLoginDate = DateTime.Now;
+                    await _userManager.UpdateAsync(user);
+                }
+                // user.LastLoginDate = DateTime.Now;
+                // await _userManager.UpdateAsync(user);
                 return RedirectToAction("Index", "Home"); // Przekierowanie po poprawnym zalogowaniu
             }
             else
@@ -52,7 +62,10 @@ public class AccountController : Controller
     {
         if (ModelState.IsValid)
         {
-            var user = new User { UserName = model.Username, Email = model.Email };
+            var user = new User { 
+                UserName = model.Username, 
+                Email = model.Email,
+                FirstName = model.FirstName,};
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
@@ -71,11 +84,27 @@ public class AccountController : Controller
         return View(model); // Zwraca widok formularza rejestracji z błędami walidacji
     }
 
-    [HttpPost("/Account/Logout")] // POST dla /Account/Logout
-    [Authorize] // Tylko zalogowani użytkownicy mogą wykonać tę akcję
-    public async Task<IActionResult> Logout()
+    // Akcja GET dla wylogowania - wyświetla widok potwierdzenia
+    [HttpGet("/Account/Logout")]
+    public IActionResult Logout()
     {
-        await _signInManager.SignOutAsync(); // Wylogowanie użytkownika
-        return RedirectToAction("Index", "Home"); // Przekierowanie po wylogowaniu
+        return View();
+    }
+
+    // Akcja POST dla wylogowania - wykonuje proces wylogowania
+    [HttpPost("/Account/Logout")]
+    public async Task<IActionResult> LogoutConfirmed()
+    {
+        await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme);
+        return RedirectToAction("Index", "Home");
+    }
+
+    [HttpGet("/Account/Manage")]
+    [Authorize]
+    public async Task<IActionResult> Manage()
+    {
+        await Task.Yield();
+        //TODO: cały manage
+        return View();
     }
 }

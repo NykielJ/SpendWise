@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpendWise.Models;
 
@@ -10,9 +11,11 @@ using SpendWise.Models;
 namespace SpendWise.Migrations
 {
     [DbContext(typeof(UserDataContext))]
-    partial class UserDataContextModelSnapshot : ModelSnapshot
+    [Migration("20240709200657_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.6");
@@ -196,26 +199,6 @@ namespace SpendWise.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("ExpenseCategories", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Expenses on food and groceries",
-                            Name = "Food"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Expenses on transportation",
-                            Name = "Transport"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "Expenses on entertainment",
-                            Name = "Entertainment"
-                        });
                 });
 
             modelBuilder.Entity("SpendWise.Models.Notification", b =>

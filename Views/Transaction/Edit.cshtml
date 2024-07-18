@@ -1,0 +1,47 @@
+@model SpendWise.Models.Transaction
+
+@{
+    ViewData["Title"] = "Edit Transaction";
+}
+
+<h2>Edit Transaction</h2>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label asp-for="TransactionDate" class="control-label"></label>
+        <input asp-for="TransactionDate" class="form-control" />
+        <span asp-validation-for="TransactionDate" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Amount" class="control-label"></label>
+        <input asp-for="Amount" class="form-control" />
+        <span asp-validation-for="Amount" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Description" class="control-label"></label>
+        <input asp-for="Description" class="form-control" />
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="CategoryId" class="control-label"></label>
+        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories"></select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="IsIncome" class="control-label"></label>
+        <input asp-for="IsIncome" class="form-control" />
+        <span asp-validation-for="IsIncome" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Comment" class="control-label"></label>
+        <input asp-for="Comment" class="form-control" />
+        <span asp-validation-for="Comment" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
